@@ -8,9 +8,7 @@ os.environ["PATH"] += ";C:\\Users\\indigit\\AppData\\Local\\Programs\\Ollama\\"
 
 # Define image paths
 image_paths = [
-    "/Users/indigit/Desktop/ImageTranscriber/test.png",
-    "/Users/indigit/Desktop/ImageTranscriber/school.png",
-    "/Users/indigit/Desktop/ImageTranscriber/text.png"
+    'TranscribeImages/test.png' 
 ]
 
 # Menu options
@@ -38,7 +36,7 @@ def ocr_transcription():
     for path in image_paths:
         print(f"Processing {path}:")
         final_extracted_text = image_to_text(path)
-        print(f"{final_extracted_text}\n")
+        print(f"\n{final_extracted_text}\n")
 
 # Function to run LLAVA transcription
 def llava_transcription():

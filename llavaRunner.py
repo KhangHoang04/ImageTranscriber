@@ -2,9 +2,7 @@ import subprocess
 
 # Define image paths
 image_paths = [
-    "/Users/indigit/Desktop/ImageTranscriber/test.png",
-    "/Users/indigit/Desktop/ImageTranscriber/school.png",
-    "/Users/indigit/Desktop/ImageTranscriber/text.png"
+    'TranscribeImages/test.png' 
 ]
 
 # Loop through each image and run the command

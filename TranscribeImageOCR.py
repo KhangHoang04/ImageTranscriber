@@ -19,8 +19,7 @@ def ocr_with_language(image_path):
 
 # Paths to the images you want to process
 image_paths = [
-    'test.png',
-    'test2.png',
+    'TranscribeImages/test.png', 
 ]
 
 # Iterate through the image paths and perform OCR
@@ -28,4 +27,4 @@ for path in image_paths:
     print(f"Processing {path}:")
     
     final_extracted_text = ocr_with_language(path)
-    print(f"{final_extracted_text}\n")
+    print(f"\n{final_extracted_text}\n")
