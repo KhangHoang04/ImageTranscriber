@@ -8,7 +8,7 @@ os.environ["PATH"] += ";C:\\Users\\indigit\\AppData\\Local\\Programs\\Ollama\\"
 
 # Define image paths
 image_paths = [
-    'TranscribeImages/test.png' 
+  "/Users/indigit/Desktop/ImageTranscriber/TranscribeImages/school.png"
 ]
 
 # Menu options

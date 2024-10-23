@@ -14,7 +14,7 @@ for image in image_paths:
         "ollama", 
         "run", 
         "llava", 
-        f"Describe what you see in this picture and transcribe any text you see {image}"
+        f"What's in this image? {image}"
     ]
     
     # Execute the command
