@@ -3,6 +3,7 @@
 
 ## Contributors
 - **Khang Hoang**
+- **Andy Lau**
 
 ## Description
 ImageTranscriber is a Python-based tool for transcribing text from images using **English OCR** and **LLAVA-based descriptions and transcription**. It provides two main functionalities:
