@@ -4,7 +4,7 @@ import os
 import subprocess
 
 # Define root directory for images
-root_image_dir = "/Users/indigit/Desktop/ImageTranscriber/TranscribeImages"
+root_image_dir = "/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages"
 
 def get_image_paths(directory):
     image_paths = []

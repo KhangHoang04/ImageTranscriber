@@ -5,13 +5,13 @@ from OCR import ocr_transcription
 from llavaRunner import llava_transcription
 
 # Ensure environment paths are set
-os.environ["PATH"] += ";C:\\Users\\indigit\\AppData\\Local\\Programs\\Tesseract-OCR\\"
-os.environ["PATH"] += ";C:\\Users\\indigit\\AppData\\Local\\Programs\\Ollama\\"
+os.environ["PATH"] += "/opt/homebrew/bin/tesseract"
+os.environ["PATH"] += "/usr/local/bin/ollama"
 
 # Menu options
 def display_menu():
     print("WELCOME TO THE IMAGE TRANSCRIBING TOOL\n======================================\nSelect an option:")
-    print("1. OCR Image Transcription (English only)")
+    print("1. OCR Image to Text Transcription (English only)")
     print("2. LLAVA Image Transcription")
     print("3. Exit")
 
