@@ -1,12 +1,8 @@
 # Menu.py
 
-import os
 from OCR import ocr_transcription
 from llavaRunner import llava_transcription
-
-# Ensure environment paths are set
-os.environ["PATH"] += "/opt/homebrew/bin/tesseract"
-os.environ["PATH"] += "/usr/local/bin/ollama"
+import config  # Import config to initialize paths
 
 # Menu options
 def display_menu():

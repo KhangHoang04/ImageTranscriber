@@ -3,9 +3,7 @@
 import os
 from PIL import Image
 import pytesseract
-
-# Define root directory for images
-root_image_dir = "/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages/"
+from config import ROOT_IMAGE_DIR  # Import ROOT_IMAGE_DIR from config
 
 def get_image_paths(directory):
     image_paths = []
@@ -24,7 +22,7 @@ def image_to_text(image_path, lang='eng'):
         return f"Error processing {image_path}: {str(e)}"
 
 def ocr_transcription():
-    image_paths = get_image_paths(root_image_dir)
+    image_paths = get_image_paths(ROOT_IMAGE_DIR)  # Use ROOT_IMAGE_DIR from config
     print("OCR Image Transcription (English only)")
     
     if not image_paths:

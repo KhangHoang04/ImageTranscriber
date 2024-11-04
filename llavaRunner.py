@@ -2,9 +2,7 @@
 
 import os
 import subprocess
-
-# Define root directory for images
-root_image_dir = "/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages"
+from config import ROOT_IMAGE_DIR  # Import ROOT_IMAGE_DIR from config
 
 def get_image_paths(directory):
     image_paths = []
@@ -15,7 +13,7 @@ def get_image_paths(directory):
     return image_paths
 
 def llava_transcription():
-    image_paths = get_image_paths(root_image_dir)
+    image_paths = get_image_paths(ROOT_IMAGE_DIR)  # Use ROOT_IMAGE_DIR from config
     print("LLAVA Image Transcription")
 
     if not image_paths:
@@ -28,6 +26,6 @@ def llava_transcription():
             "ollama", 
             "run", 
             "llava", 
-            f"Describe what you see in this picture and transcribe any text you see {image}"
+            f"Describe what you see in this picture and transcribe any text you see: {image}"
         ]
         subprocess.run(command)

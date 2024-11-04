@@ -30,14 +30,22 @@ Before running the project, ensure you have the following tools installed:
 
 #### 1. Tesseract-OCR Installation
 1. Download and install Tesseract-OCR from the [official Tesseract GitHub repository](https://github.com/tesseract-ocr/tesseract).
-2. Add the Tesseract binary to your system's PATH. For macOS, you can add it to PATH in `Menu.py` as shown in the "Configuration" section below.
+2. Add the Tesseract binary to your system's PATH. For macOS, you can add it to PATH in `config.py` as shown in the "Configuration" section below.
 3. Download the English language file (`eng.traineddata`) from the [Tesseract language data repository](https://github.com/tesseract-ocr/tessdata) and place it in the `tessdata` directory.
 
-#### 2. Python Libraries Installation
-1. Install Python from [python.org](https://www.python.org/downloads/) if it’s not already installed.
-2. Install required Python libraries using `pip`:
+#### 2. Install Python Libraries with `requirements.txt`
+1. Ensure Python is installed on your system. If not, download it from [python.org](https://www.python.org/downloads/).
+2. Install the required Python libraries listed in `requirements.txt` by running:
    ```bash
-   pip install pytesseract Pillow
+   pip install -r requirements.txt
+   ```
+
+   This command will automatically install all the necessary dependencies for the project.
+
+3. **Create a `requirements.txt` file** if it doesn’t exist, listing all required packages:
+   ```plaintext
+   pytesseract
+   Pillow
    ```
 
 #### 3. Ollama and LLAVA Setup
@@ -47,25 +55,15 @@ Before running the project, ensure you have the following tools installed:
    ollama run llava
    ```
 
-### Configuration
-To ensure paths are set correctly, make the following modifications to the project files:
+### Configuration with `config.py`
+`config.py` handles cross-platform configuration of paths for Tesseract, Ollama, and the root image directory.
 
-- **`Menu.py`**: Add Tesseract and Ollama paths to the environment.
-  ```python
-  import os
-  os.environ["PATH"] += ":/opt/homebrew/bin/tesseract"
-  os.environ["PATH"] += ":/usr/local/bin/ollama"
-  ```
+- **Dynamic Path Detection**: `config.py` uses `which` on macOS/Linux and `where` on Windows to locate Tesseract and Ollama. If these commands are not available, default paths are provided for each OS.
+- **Default Paths Based on OS**:
+  - macOS/Linux: Tesseract defaults to `/opt/homebrew/bin/tesseract` and Ollama to `/usr/local/bin/ollama`.
+  - Windows: Tesseract defaults to `C:\Program Files\Tesseract-OCR\tesseract.exe` and Ollama to `C:\Program Files\Ollama\ollama.exe`.
 
-- **`llavaRunner.py`**: Update the image directory path.
-  ```python
-  root_image_dir = "/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages"
-  ```
-
-- **`OCR.py`**: Update the image directory path.
-  ```python
-  root_image_dir = "/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages/"
-  ```
+You can also set custom paths by configuring environment variables for `TESSERACT_PATH`, `OLLAMA_PATH`, and `ROOT_IMAGE_DIR`.
 
 ## Usage
 This project provides two main ways to interact with images:
@@ -87,7 +85,7 @@ This project provides two main ways to interact with images:
 ### Example File Descriptions
 
 #### `Menu.py`
-This script displays a menu and allows users to select either the OCR or LLAVA transcription option. Ensure that the Tesseract and Ollama paths are added to the environment.
+This script displays a menu and allows users to select either the OCR or LLAVA transcription option. The paths for Tesseract and Ollama are managed by `config.py` for cross-platform compatibility.
 
 #### `OCR.py`
 This module handles all OCR-based transcription. It searches recursively in the `TranscribeImages` directory for images and uses Tesseract to extract text. If no text is detected, it informs the user that OCR may not be supported for the image.
@@ -96,14 +94,11 @@ This module handles all OCR-based transcription. It searches recursively in the 
 This module handles LLAVA-based image transcription. Like `OCR.py`, it searches recursively through `TranscribeImages` for images. Using the `ollama` tool, it provides descriptions and text transcriptions for each image.
 
 ## Troubleshooting
-- **No Images Found**: If the tool says "No images found in the directory," verify that `root_image_dir` in `llavaRunner.py` and `OCR.py` points to the correct path where your images are stored, and that the images in `TranscribeImages` are in supported formats like `.png`, `.jpg`, `.jpeg`, `.tiff`, `.bmp`, or `.gif`.
+- **No Images Found**: If the tool says "No images found in the directory," verify that `ROOT_IMAGE_DIR` in `config.py` points to the correct path where your images are stored, and that the images in `TranscribeImages` are in supported formats like `.png`, `.jpg`, `.jpeg`, `.tiff`, `.bmp`, or `.gif`.
 
-- **Path Issues**: Ensure Tesseract and Ollama paths are correctly set in `Menu.py` as described above. If not, the tool may not be able to find these dependencies.
+- **Path Issues**: Ensure Tesseract and Ollama paths are correctly set in `config.py` or in environment variables. If the binaries are not found, the tool will fall back to default paths.
 
-- **Specify Tesseract Path Directly (Windows)**: If you’re on Windows, you might need to specify the Tesseract path in `OCR.py` directly:
-  ```python
-  pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-  ```
+- **Specify Tesseract Path Directly (Windows)**: If you’re on Windows and experience issues, ensure the Tesseract executable is accessible in your PATH, or update `TESSERACT_PATH` in `config.py`.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
