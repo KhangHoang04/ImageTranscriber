@@ -26,6 +26,6 @@ def llava_transcription():
             "ollama", 
             "run", 
             "llava", 
-            f"Describe what you see in this picture and transcribe any text you see: {image}"
+            f"List all visible objects, features, and text exactly as they appear in the image. Do not include any interpretations, assumptions, or inferred details. Keep transcription concise yet detailed. Transcribe any text exactly as shown:  {image}"
         ]
         subprocess.run(command)
