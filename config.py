@@ -63,7 +63,7 @@ append_to_path(OLLAMA_PATH, PATH_SEPARATOR)
 
 # Set ROOT_IMAGE_DIR dynamically if not already set
 if "ROOT_IMAGE_DIR" not in os.environ:
-    os.environ["ROOT_IMAGE_DIR"] = r"C:\Users\indigit\Desktop\ImageTranscriber\TranscribeImages"
+    os.environ["ROOT_IMAGE_DIR"] = r"/Users/khang/Desktop/Projects/ImageTranscriber/TranscribeImages"
 
 ROOT_IMAGE_DIR = os.environ["ROOT_IMAGE_DIR"]
 

@@ -1,0 +1,18 @@
+Image: house-mouse.jpg
+Transcription: -
+
+Image: school.png
+Transcription: ITEM
+
+Image: meme.png
+Transcription: :
+
+Image: test.png
+Transcription: ITEMER
+
+Image: text.png
+Transcription: AMOUNT
+
+Image: coding.png
+Transcription: -------
+
